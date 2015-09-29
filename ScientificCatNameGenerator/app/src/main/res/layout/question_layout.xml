@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id = "@+id/question_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text=" "
+        android:gravity="left"
+        android:textColor="#ff193a05"/>
+
+    <RadioGroup
+        android:id="@+id/radioQuestionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rb_answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pg1_answer1"
+            android:textAlignment="gravity"
+            android:textColor="#ffb3ff00"/>
+
+        <RadioButton
+            android:id="@+id/rb_answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pg1_answer2"
+            android:gravity="left"
+            android:textAlignment="gravity"
+            android:textColor="#ffb3ff00"/>
+
+        <RadioButton
+            android:id="@+id/rb_answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pg1_answer3"
+            android:gravity="left"
+            android:textAlignment="gravity"
+            android:textColor="#ffb3ff00"/>
+
+        <RadioButton
+            android:id="@+id/rb_answer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pg1_answer4"
+            android:gravity="left"
+            android:textAlignment="gravity"
+            android:textColor="#ffb3ff00"/>
+    </RadioGroup>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/generate_button"
+        android:text="@string/generate_button"></Button>
+</LinearLayout>
