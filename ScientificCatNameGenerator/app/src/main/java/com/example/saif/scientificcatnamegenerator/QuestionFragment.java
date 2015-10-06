@@ -20,6 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class QuestionFragment extends Fragment {
+
     @Bind (R.id.generate_button) Button mGenerateButton;
     @Bind (R.id.question_text_view) TextView mQuestionText;
     @Bind (R.id.rb_answer1) RadioButton mAnswerOne;
@@ -38,6 +39,7 @@ public class QuestionFragment extends Fragment {
 
     private int mPosition = 0;
 
+    private ToastMaker mToastMaker;
     public static QuestionFragment instance(int position) {
         QuestionFragment fragment1 = new QuestionFragment();
         fragment1.setPosition(position);
@@ -56,9 +58,13 @@ public class QuestionFragment extends Fragment {
             return null;
         }
 
-        View v =inflater.inflate(R.layout.question_layout, container, false);
-        context = v.getContext();
-        ButterKnife.bind(this, v);
+
+
+        View questionView =inflater.inflate(R.layout.question_layout, container, false);
+        context = questionView.getContext();
+        ButterKnife.bind(this, questionView);
+
+        mToastMaker = new ToastMaker(context);
 
         questionGetter = new QuestionHandler("cat_questions.txt", context);
         answerGetter = new AnswerHandler("cat_questions.txt", context);
@@ -111,6 +117,7 @@ public class QuestionFragment extends Fragment {
                     @Override
                     public void onClick(View v){
                         history.insertName(name);
+                        mToastMaker.makeToast(name +" has been added to your liked names page!");
                         dialog.cancel();
                     }
                 });
@@ -119,90 +126,6 @@ public class QuestionFragment extends Fragment {
 
             }
         });
-        return v;
+        return questionView;
     }
 }
-//
-//        nextButton = (Button)findViewById(R.id.next_button);
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                setChoice();
-//                questionNumber++;
-//                if(questionNumber == 1) {
-//                    prevButton.setVisibility(View.VISIBLE);
-//                }
-//                if(questionNumber == 14){
-//                    generateButton.setVisibility(View.VISIBLE);
-//                    nextButton.setVisibility(View.GONE);
-//                }
-//                setQuestion();
-//                setAnswers();
-//                setNextChoice();
-//            }
-//        });
-//
-//        prevButton = (Button) findViewById(R.id.previous_button);
-//        prevButton.setVisibility(View.GONE);
-//        prevButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                setChoice();
-//                questionNumber--;
-//                if(questionNumber == 13){
-//                    generateButton.setVisibility(View.GONE);
-//                    nextButton.setVisibility(View.VISIBLE);
-//                }
-//                if(questionNumber == 0){
-//                    prevButton.setVisibility(View.GONE);
-//                }
-//                setQuestion();
-//                setAnswers();
-//                setNextChoice();
-//
-//            }
-//        });
-//
-//
-//
-//        questionGroup = (RadioGroup)findViewById(R.id.radioQuestionGroup);
-//
-//
-//
-//        firstOption = (RadioButton)findViewById(R.id.rb_answer1);
-//        secondOption = (RadioButton)findViewById(R.id.rb_answer2);
-//        thirdOption = (RadioButton)findViewById(R.id.rb_answer3);
-//        fourthOption = (RadioButton)findViewById(R.id.rb_answer4);
-//
-//        setQuestion();
-//        setAnswers();
-//        setNextChoice();
-//
-//
-//        //firstOption.setButtonDrawable(R.drawable.radio);
-//    }
-//    public void setQuestion(){
-//        question.setText(questionGetter.getQuestionAt(questionNumber));
-//        return;
-//    }
-//
-//    public void setAnswers(){
-//        firstOption.setText(answerGetter.returnAnswer(questionNumber,0));
-//        secondOption.setText(answerGetter.returnAnswer(questionNumber,1));
-//        thirdOption.setText(answerGetter.returnAnswer(questionNumber,2));
-//        fourthOption.setText(answerGetter.returnAnswer(questionNumber,3));
-//
-//        return;
-//    }
-//
-//    public void setChoice (){
-//        answerArray[mPosition] = questionGroup.getCheckedRadioButtonId();
-//        return;
-//    }
-//
-//    public void setNextChoice(){
-//        if(answerArray[questionNumber] == 0){
-//            questionGroup.check(firstOption.getId());
-//        }else{
-//            questionGroup.check(answerArray[questionNumber]);
-//        }

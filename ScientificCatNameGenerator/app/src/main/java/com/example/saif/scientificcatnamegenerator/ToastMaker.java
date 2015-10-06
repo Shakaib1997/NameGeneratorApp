@@ -8,8 +8,12 @@ import android.widget.Toast;
  */
 public class ToastMaker {
     private final int duration = Toast.LENGTH_SHORT;
+    private Context mContext;
+    ToastMaker(Context context){
+        this.mContext = context;
+    }
 
-    ToastMaker(String message, Context context){
-        Toast.makeText(context,message,duration).show();
+    public void makeToast (String message) {
+        Toast.makeText(mContext, message, duration).show();
     }
 }

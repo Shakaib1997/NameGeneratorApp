@@ -50,7 +50,7 @@ public class Question_Activity extends ActionBarActivity {
     private QuestionHandler questionGetter;
     private AnswerHandler answerGetter;
 
-    //dialog screen
+
 
     @Bind(R.id.back_button) Button mBackButton;
 
@@ -62,14 +62,6 @@ public class Question_Activity extends ActionBarActivity {
         /// HERE IS WHERE WE START THE VIEWPAGER
 
         initialisePaging();
-
-        //context = getApplicationContext();
-        context = this;
-        ///the thing that puts the generated names in history
-
-        //my two fonts
-
-
 
         mBackButton.setOnClickListener(new View.OnClickListener(){
             @Override
